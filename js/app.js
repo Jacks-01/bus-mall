@@ -4,7 +4,7 @@ console.log('app connected');
 
 //global variables
 let imageContainer = document.querySelector('section');
-let resultButton = document.querySelector('section + div');
+let resultButton = document.querySelector('div');
 let image1 = document.querySelector('section img:first-child');
 let image2 = document.querySelector('section img:nth-child(2)');
 let image3 = document.querySelector('section img:nth-child(3)');
