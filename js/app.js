@@ -44,38 +44,36 @@ function getRandomNumber(){
 
 function renderImages(){
 
-  let image1 = getRandomNumber();
-  let image2 = getRandomNumber();
-  let image3 = getRandomNumber();
+  let pic1 = getRandomNumber();
+  let pic2 = getRandomNumber();
+  let pic3 = getRandomNumber();
 
 
-  if (image1 === image2 || image1 === image3){
-    image1 = getRandomNumber();
+  if (pic1 === pic2 || pic1 === pic3){
+    pic1 = getRandomNumber();
   }
 
-  if (image2 === image3 || image2 === image1){
-    image2 = getRandomNumber();
+  if (pic2 === pic3 || pic2 === pic1){
+    pic2 = getRandomNumber();
   }
-  if(image3 === image2 || image3 === image1){
-    image3 = getRandomNumber();
+  if(pic3 === pic2 || pic3 === pic1){
+    pic3 = getRandomNumber();
   }
-  // while((image1 === image2 || image3) && (image2 === image3)){
+  // while((pic1 === pic2 || pic3) && (pic2 === pic3)){
 
-  // image1.src = 
-  console.log(Image.allImagesArray[image1].src);
-  // image2.src = Image.allImagesArray[image2].src;
-  // image3.src = Image.allImagesArray[image3].src;
+  image1.src = Image.allImagesArray[pic1].src;
+  image2.src = Image.allImagesArray[pic2].src;
+  image3.src = Image.allImagesArray[pic3].src;
 
-  // image3.alt = Image.allImagesArray[image3].name;
-  // image3.alt = Image.allImagesArray[image3].name;
-  // image3.alt = Image.allImagesArray[image3].name;
+  image1.alt = Image.allImagesArray[pic3].name;
+  image2.alt = Image.allImagesArray[pic3].name;
+  image3.alt = Image.allImagesArray[pic3].name;
 
 
   //track views
-  Image.allImagesArray[image1].views++;
-  Image.allImagesArray[image2].views++;
-  Image.allImagesArray[image3].views++;
-  
+  Image.allImagesArray[pic1].view++;
+  Image.allImagesArray[pic2].view++;
+  Image.allImagesArray[pic3].view++;
 
   // }
 
@@ -88,33 +86,30 @@ function handleImageClick(event){
   }
   clicks++;
   let clickImage = event.target.alt;
-  for(let i = 0; i <Image.allImagesArray.length; i++){
+  for(let i = 0; i < Image.allImagesArray.length; i++){
     if(clickImage === Image.allImagesArray[i].name){
       Image.allImagesArray[i].click++;
       break;
     }
-    //check to see if max clicks has been reached
-    if(clicks === maxClicksAllowed){
-      imageContainer.removeEventListener('click', handleImageClick);
-      resultButton.addEventListener('click', renderResults());
-      imageContainer.className = 'no voting';
-
-    }
-    else{
-      renderImages();
-    }
-
+  }//closes for loop
+  //check to see if max clicks has been reached
+  if(clicks === maxClicksAllowed){
+    imageContainer.removeEventListener('click', handleImageClick);
+    resultButton.addEventListener('click', renderResults());
+    imageContainer.className = 'no voting';
+  } else{
+    renderImages();
   }
-
-}
+}//closes function
 
 function renderResults(){
   let ul = document.querySelector('ul');
-  for(let i = 0; Image.allImagesArray.length; i++){
+  for(let i = 0; i < Image.allImagesArray.length; i++){
     let li = document.createElement('li');
     li.textContent = `${Image.allImagesArray[i].name} had ${Image.allImagesArray[i].views} views and was clicked on ${Image.allImagesArray[i].click} times.`;
     ul.appendChild(li);
   }
+
 }
 
 new Image('bag','images/bag.jpg');
@@ -124,14 +119,14 @@ new Image('boots','images/boots.jpg');
 new Image('breakfast','images/breakfast.jpg');
 new Image('bubblegum','images/bubblegum.jpg');
 new Image('chair','images/chair.jpg');
-new Image('cthulu','images/cthulu.jpg');
+new Image('cthulhu','images/cthulhu.jpg');
 new Image('dog duck','images/dog-duck.jpg');
 new Image('dragon','images/dragon.jpg');
 new Image('pen','images/pen.jpg');
 new Image('pet sweep','images/pet-sweep.jpg');
 new Image('scissors','images/scissors.jpg');
 new Image('shark','images/shark.jpg');
-new Image('sweep','images/sweep.jpg');
+new Image('sweep','images/sweep.png');
 new Image('tauntaun','images/tauntaun.jpg');
 new Image('unicorn','images/unicorn.jpg');
 new Image('water can','images/water-can.jpg');
