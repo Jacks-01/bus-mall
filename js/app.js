@@ -95,7 +95,7 @@ function handleImageClick(event){
   //check to see if max clicks has been reached
   if(clicks === maxClicksAllowed){
     imageContainer.removeEventListener('click', handleImageClick);
-    resultButton.addEventListener('click', renderResults());
+    resultButton.addEventListener('click', renderResults);
     imageContainer.className = 'no voting';
   } else{
     renderImages();
@@ -106,7 +106,7 @@ function renderResults(){
   let ul = document.querySelector('ul');
   for(let i = 0; i < Image.allImagesArray.length; i++){
     let li = document.createElement('li');
-    li.textContent = `${Image.allImagesArray[i].name} had ${Image.allImagesArray[i].views} views and was clicked on ${Image.allImagesArray[i].click} times.`;
+    li.textContent = `${Image.allImagesArray[i].name} had ${Image.allImagesArray[i].view} views and was clicked on ${Image.allImagesArray[i].click} times.`;
     ul.appendChild(li);
   }
 
