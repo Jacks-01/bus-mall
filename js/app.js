@@ -93,7 +93,7 @@ function handleImageClick(event){
     }
   }//closes for loop
   //check to see if max clicks has been reached
-  if(clicks === maxClicksAllowed){
+  if (clicks === maxClicksAllowed){
     imageContainer.removeEventListener('click', handleImageClick);
     resultButton.addEventListener('click', renderResults);
     imageContainer.className = 'no voting';
