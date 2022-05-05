@@ -43,7 +43,7 @@ console.log(allImagesArray);
 
 
 let savedImageString = localStorage.getItem('savedImageData');
-// console.log('this is the objects in string form ', savedImageString);
+console.log('this is the objects in string form ', savedImageString);
 
 if(savedImageString){
   //parse our string into an object
@@ -81,14 +81,6 @@ if(savedImageString){
 }
 
 
-
-
-
-
-
-
-
-
 /**
  *
  * @returns random number for image selection
@@ -120,10 +112,10 @@ function renderImages(){
   image1.src = allImagesArray[pic1].src;
   image2.src = allImagesArray[pic2].src;
   image3.src = allImagesArray[pic3].src;
-  
 
-  image1.alt = allImagesArray[pic3].name;
-  image2.alt = allImagesArray[pic3].name;
+
+  image1.alt = allImagesArray[pic1].name;
+  image2.alt = allImagesArray[pic2].name;
   image3.alt = allImagesArray[pic3].name;
 
 
@@ -138,6 +130,7 @@ function renderImages(){
 }
 
 function handleImageClick(event){
+  console.log(event.target.alt);
   if(event.target === imageContainer){
     alert('please click on an image');
   }
@@ -145,12 +138,9 @@ function handleImageClick(event){
   let clickImage = event.target.alt;
   for(let i = 0; i < allImagesArray.length; i++){
     if(clickImage === allImagesArray[i].name){
-      allImagesArray[i].click++;
-
-
-    // let localClicks = localStorage.setItem(Image.allImagesArray[i].click,);
-
-
+      allImagesArray[i].timesClicked++;
+      console.log(allImagesArray[i]);
+      // let localClicks = localStorage.setItem(Image.allImagesArray[i].click,);
       break;
     }
   }//closes for loop
@@ -159,7 +149,8 @@ function handleImageClick(event){
     resultButton.addEventListener('click', renderResults);
     imageContainer.removeEventListener('click', handleImageClick);
     imageContainer.className = 'no-voting';
-    localStorage.setItem('savedImageData', JSON.stringify('allImagesArray'));
+    localStorage.setItem('savedImageData', JSON.stringify(allImagesArray));
+    console.log({allImagesArray});
   } else{
     renderImages();
   }
