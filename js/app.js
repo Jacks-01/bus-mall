@@ -15,7 +15,7 @@ let maxClicksAllowed = 3;
 // console.log('click tracker', {clicks, maxClicksAllowed});
 const allImagesArray = [];
 
-  const Image = function(name, src, timesClicked, timesShown){
+const Image = function(name, src, timesClicked, timesShown){
   this.name = name;
   this.src = src;
   if(timesClicked){
@@ -42,7 +42,7 @@ console.log(allImagesArray);
 
 
 
-let savedImageString = localStorage.getItem('savedImage');
+let savedImageString = localStorage.getItem('savedImageData');
 // console.log('this is the objects in string form ', savedImageString);
 
 if(savedImageString){
@@ -51,7 +51,7 @@ if(savedImageString){
   console.log('if condition what is our type', arrayOfNotImageObject);
   //once we have object we are oging to run them through our constructor function so that they are image objects
   for(let j = 0; j < arrayOfNotImageObject.length; j++){
-    new productPicture(
+    new Image (
       arrayOfNotImageObject[j].name,
       arrayOfNotImageObject[j].src,
       arrayOfNotImageObject[j].timesClicked,
@@ -122,15 +122,15 @@ function renderImages(){
   image3.src = allImagesArray[pic3].src;
   
 
-  image1.alt = Image.allImagesArray[pic3].name;
-  image2.alt = Image.allImagesArray[pic3].name;
-  image3.alt = Image.allImagesArray[pic3].name;
+  image1.alt = allImagesArray[pic3].name;
+  image2.alt = allImagesArray[pic3].name;
+  image3.alt = allImagesArray[pic3].name;
 
 
   //track views
-  Image.allImagesArray[pic1].view++;
-  Image.allImagesArray[pic2].view++;
-  Image.allImagesArray[pic3].view++;
+  allImagesArray[pic1].view++;
+  allImagesArray[pic2].view++;
+  allImagesArray[pic3].view++;
 
   // }
 
@@ -143,9 +143,9 @@ function handleImageClick(event){
   }
   clicks++;
   let clickImage = event.target.alt;
-  for(let i = 0; i < Image.allImagesArray.length; i++){
-    if(clickImage === Image.allImagesArray[i].name){
-      Image.allImagesArray[i].click++;
+  for(let i = 0; i < allImagesArray.length; i++){
+    if(clickImage === allImagesArray[i].name){
+      allImagesArray[i].click++;
 
 
     // let localClicks = localStorage.setItem(Image.allImagesArray[i].click,);
@@ -156,7 +156,7 @@ function handleImageClick(event){
   }//closes for loop
   //check to see if max clicks has been reached
   if (clicks === maxClicksAllowed){
-    // resultButton.addEventListener('click', renderResults);
+    resultButton.addEventListener('click', renderResults);
     imageContainer.removeEventListener('click', handleImageClick);
     imageContainer.className = 'no-voting';
     localStorage.setItem('savedImageData', JSON.stringify('allImagesArray'));
@@ -165,15 +165,15 @@ function handleImageClick(event){
   }
 }//closes function
 
-// function renderResults(){
-//   let ul = document.querySelector('ul');
-//   for(let i = 0; i < Image.allImagesArray.length; i++){
-//     let li = document.createElement('li');
-//     li.textContent = `${Image.allImagesArray[i].name} had ${Image.allImagesArray[i].view} views and was clicked on ${Image.allImagesArray[i].click} times.`;
-//     ul.appendChild(li);
-//   }
+function renderResults(){
+  let ul = document.querySelector('ul');
+  for(let i = 0; i < allImagesArray.length; i++){
+    let li = document.createElement('li');
+    li.textContent = `${allImagesArray[i].name} had ${allImagesArray[i].view} views and was clicked on ${allImagesArray[i].click} times.`;
+    ul.appendChild(li);
+  }
 
-// }
+}
 
 
 
