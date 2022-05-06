@@ -10,6 +10,7 @@
 
     grid-template-rows: 100px 2fr 1fr 100px;
     grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
 }
 
 .header {
@@ -19,13 +20,38 @@
 
 .main {
   grid-area: main;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3,1fr);
+  justify-items: center; 
+}
+
+.main img {
+  height: 300px;
 }
 
 .chart {
   grid-area: chart;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+}
+
+#chartResults {
+  grid-row: 1;
+  width: 200px;
+  height: 50px;
+}
+
+#imageChart {
+  grid-row: 2;
+
 }
 
 .footer {
   grid-area: footer;
 }
+
 
