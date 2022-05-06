@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "main main main"
+    "chart chart chart"
+    "footer footer footer";
+
+    grid-template-rows: 100px 2fr 1fr 100px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.header {
+  grid-area: header;
+
+}
+
+.main {
+  grid-area: main;
+}
+
+.chart {
+  grid-area: chart;
+}
+
+.footer {
+  grid-area: footer;
+}
+
