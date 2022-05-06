@@ -51,9 +51,10 @@ body {
 .chart {
   grid-area: chart;
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 100px 1fr;
   grid-template-columns: 1fr;
   justify-items: center;
+  align-items: center;
 
 }
 
