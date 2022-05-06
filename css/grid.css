@@ -1,6 +1,7 @@
 .container {
-  width: 100%;
+  width: 90%;
   height: 100vh;
+  margin: 0 auto;
   display: grid;
   grid-template-areas: 
     "header header header"
@@ -23,7 +24,10 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(3,1fr);
-  justify-items: center; 
+  column-gap: 20px;
+  justify-items: center;
+  align-items: center;
+  
 }
 
 .main img {
@@ -52,6 +56,11 @@
 
 .footer {
   grid-area: footer;
+}
+
+
+body {
+  width: 100%
 }
 
 
