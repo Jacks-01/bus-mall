@@ -43,11 +43,10 @@ console.log(allImagesArray);
 
 
 let savedImageString = localStorage.getItem('savedImageData');
-console.log('this is the objects in string form ', savedImageString);
 
 if(savedImageString){
   //parse our string into an object
-  let arrayOfNotImageObject = JSON.parse(savedImageString);
+  let arrayOfNotImageObject = JSON.parse(JSON.stringify((savedImageString)));
   console.log('if condition what is our type', arrayOfNotImageObject);
   //once we have object we are oging to run them through our constructor function so that they are image objects
   for(let j = 0; j < arrayOfNotImageObject.length; j++){
@@ -120,9 +119,9 @@ function renderImages(){
 
 
   //track views
-  allImagesArray[pic1].view++;
-  allImagesArray[pic2].view++;
-  allImagesArray[pic3].view++;
+  allImagesArray[pic1].timesShown++;
+  allImagesArray[pic2].timesShown++;
+  allImagesArray[pic3].timesShown++;
 
   // }
 
@@ -160,7 +159,7 @@ function renderResults(){
   let ul = document.querySelector('ul');
   for(let i = 0; i < allImagesArray.length; i++){
     let li = document.createElement('li');
-    li.textContent = `${allImagesArray[i].name} had ${allImagesArray[i].view} views and was clicked on ${allImagesArray[i].click} times.`;
+    li.textContent = `${allImagesArray[i].name} had ${allImagesArray[i].timesShown} views and was clicked on ${allImagesArray[i].timesClicked} times.`;
     ul.appendChild(li);
   }
 
