@@ -8,7 +8,9 @@ let resultButton = document.querySelector('div');
 let image1 = document.querySelector('section img:first-child');
 let image2 = document.querySelector('section img:nth-child(2)');
 let image3 = document.querySelector('section img:nth-child(3)');
-console.log({imageContainer, resultButton, image1, image2, image3});
+let chartResults = document.getElementById('chartResults');
+
+// console.log({imageContainer, resultButton, image1, image2, image3});
 
 let clicks = 0;
 let maxClicksAllowed = 3;
@@ -164,11 +166,49 @@ function renderResults(){
   }
 
 }
-
-
-
-
 renderImages();
 
-
 imageContainer.addEventListener('click', handleImageClick);
+
+function createChart() {
+  const imageNamesArray = [];
+  const imageClicksArray = [];
+  for (let i = 0; i < allImagesArray.length; i++) {
+    const singleImageName = allImagesArray[i].name;
+    imageNamesArray.push(singleImageName);
+  }
+
+  for (let i = 0; i < allImagesArray.length; i++){
+    const singleImageClicks = allImagesArray[i].timesClicked;
+    imageClicksArray.push(singleImageClicks);
+  }
+}
+
+
+
+
+
+// add the chart 
+const ctx = document.getElementById('imageChart').getContext('2d');
+const imageChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: imageNamesArray,
+    datasets: [{
+      label: 'Image Clicks',
+      backgroundColor: 'rgba(255, 99, 132, 0.8)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      data: imageClicksArray
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
