@@ -46,7 +46,7 @@ let savedImageString = localStorage.getItem('savedImageData');
 
 if(savedImageString){
   //parse our string into an object
-  let arrayOfNotImageObject = JSON.parse(JSON.stringify((savedImageString)));
+  let arrayOfNotImageObject = JSON.parse((savedImageString));
   console.log('if condition what is our type', arrayOfNotImageObject);
   //once we have object we are oging to run them through our constructor function so that they are image objects
   for(let j = 0; j < arrayOfNotImageObject.length; j++){
