@@ -39,7 +39,6 @@ const Image = function(name, src, timesClicked, timesShown){
 
 };
 
-console.log(allImagesArray);
 
 
 
@@ -49,7 +48,7 @@ let savedImageString = localStorage.getItem('savedImageData');
 if(savedImageString){
   //parse our string into an object
   let arrayOfNotImageObject = JSON.parse((savedImageString));
-  console.log('if condition what is our type', arrayOfNotImageObject);
+  // console.log('if condition what is our type', arrayOfNotImageObject);
   //once we have object we are oging to run them through our constructor function so that they are image objects
   for(let j = 0; j < arrayOfNotImageObject.length; j++){
     new Image (
@@ -151,7 +150,6 @@ function handleImageClick(event){
     imageContainer.removeEventListener('click', handleImageClick);
     imageContainer.className = 'no-voting';
     localStorage.setItem('savedImageData', JSON.stringify(allImagesArray));
-    console.log({allImagesArray});
   } else{
     renderImages();
   }
@@ -163,12 +161,15 @@ function renderResults(){
     let li = document.createElement('li');
     li.textContent = `${allImagesArray[i].name} had ${allImagesArray[i].timesShown} views and was clicked on ${allImagesArray[i].timesClicked} times.`;
     ul.appendChild(li);
+    createChart();
   }
 
 }
+
 renderImages();
 
 imageContainer.addEventListener('click', handleImageClick);
+chartResults.addEventListener('click', createChart)
 
 function createChart() {
   const imageNamesArray = [];
@@ -176,19 +177,17 @@ function createChart() {
   for (let i = 0; i < allImagesArray.length; i++) {
     const singleImageName = allImagesArray[i].name;
     imageNamesArray.push(singleImageName);
+    console.log(singleImageName); 
+    console.log(imageNamesArray);
   }
 
   for (let i = 0; i < allImagesArray.length; i++){
     const singleImageClicks = allImagesArray[i].timesClicked;
     imageClicksArray.push(singleImageClicks);
+    console.log(singleImageClicks);
   }
-}
 
-
-
-
-
-// add the chart 
+  // add the chart 
 const ctx = document.getElementById('imageChart').getContext('2d');
 const imageChart = new Chart(ctx, {
   type: 'bar',
@@ -206,9 +205,9 @@ const imageChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           beginAtZero: true
-        }
-      }]
+         }
+        }]
+      }
     }
-  }
-});
-
+  });
+};
