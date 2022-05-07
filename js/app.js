@@ -186,8 +186,9 @@ const imageChart = new Chart(ctx, {
     labels: imageNamesArray,
     datasets: [{
       label: 'Image Clicks',
-      backgroundColor: 'rgba(255, 99, 132, 0.8)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: 'rgba(255, 201, 165, 1.0)',
+      borderColor: 'rgba(108, 214, 193, 0.0)',
+      borderWidth: 2,
       data: imageClicksArray
     }]
   },

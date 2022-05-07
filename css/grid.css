@@ -125,6 +125,15 @@ body {
 
 .footer {
   grid-area: footer;
+  display: grid;
+  background-color: #B4A9F4;
+  grid-template-rows: 100px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+
+
 }
 
 
