@@ -14,7 +14,6 @@ let chartResults = document.getElementById('chartResults');
 
 let clicks = 0;
 let maxClicksAllowed = 3;
-// console.log('click tracker', {clicks, maxClicksAllowed});
 const allImagesArray = [];
 
 const Image = function(name, src, timesClicked, timesShown){
@@ -140,15 +139,14 @@ function handleImageClick(event){
     if(clickImage === allImagesArray[i].name){
       allImagesArray[i].timesClicked++;
       console.log(allImagesArray[i]);
-      // let localClicks = localStorage.setItem(Image.allImagesArray[i].click,);
       break;
     }
   }//closes for loop
   //check to see if max clicks has been reached
   if (clicks === maxClicksAllowed){
-    resultButton.addEventListener('click', renderResults);
+    // resultButton.addEventListener('click', renderResults);
+    alert('you are out of clicks, view your results!');
     imageContainer.removeEventListener('click', handleImageClick);
-    imageContainer.className = 'no-voting';
     localStorage.setItem('savedImageData', JSON.stringify(allImagesArray));
   } else{
     renderImages();
@@ -156,14 +154,7 @@ function handleImageClick(event){
 }//closes function
 
 function renderResults(){
-  let ul = document.querySelector('ul');
-  for(let i = 0; i < allImagesArray.length; i++){
-    let li = document.createElement('li');
-    li.textContent = `${allImagesArray[i].name} had ${allImagesArray[i].timesShown} views and was clicked on ${allImagesArray[i].timesClicked} times.`;
-    ul.appendChild(li);
-    createChart();
-  }
-
+  createChart();
 }
 
 renderImages();
@@ -195,8 +186,9 @@ const imageChart = new Chart(ctx, {
     labels: imageNamesArray,
     datasets: [{
       label: 'Image Clicks',
-      backgroundColor: 'rgba(255, 99, 132, 0.8)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: 'rgba(255, 201, 165, 1.0)',
+      borderColor: 'rgba(108, 214, 193, 0.0)',
+      borderWidth: 2,
       data: imageClicksArray
     }]
   },

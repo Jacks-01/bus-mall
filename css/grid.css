@@ -1,81 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+/* font-family: 'Patrick Hand', cursive; */
+
+
+
+
 body {
-  box-sizing: border-box;
+  width: 100%;
+  background-color: rgb(165, 196, 243);
+}
+
+.container {
+  width: 90%;
+  height: 100vh;
+  margin: 0 auto;
   display: grid;
-  grid-template-rows: 1fr 3fr 1fr;
-  grid-template-columns: 1fr 2fr;
-  background-color:cornflowerblue;
-  row-gap: 10px;
+  grid-template-areas: 
+    "header header header"
+    "main main main"
+    "chart chart chart"
+    "footer footer footer";
+
+    grid-template-rows: 100px 2fr 1fr 100px;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
 }
 
-img {
-  width: 300px;
+.header {
+  grid-area: header;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 30px;
+  
+
+}
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3,1fr);
+  column-gap: 20px;
+  justify-items: center;
+  align-items: center;
+  
+}
+
+.main img {
   height: 300px;
+}
+
+.chart {
+  grid-area: chart;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
 
 }
 
-header {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  background-color: chartreuse;
+/* CSS */
+/* Credit: getcssscan.com/css-buttons-examples:*/
+#chartResults {
+  align-items: center;
+  background-color: #9DF2E1;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-#logo {
-  display: inline;
-  width: 75px;
-  height: 75px;
+#chartResults:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
 }
 
-h1 {
-  display: inline;
+#chartResults:hover:after {
+  transform: translate(0, 0);
 }
 
-main {
-  grid-row-start: 2;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
+#chartResults:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+#chartResults:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  #chartResults {
+    padding: 0 40px;
+  }
+}
+
+#imageChart {
+  grid-row: 2;
+
+}
+
+.footer {
+  grid-area: footer;
+  display: grid;
+  background-color: #B4A9F4;
+  grid-template-rows: 100px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+
+
 }
 
 
 
 
-#results-container {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  font-size: large;
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-div {
-  background-color: rgb(20, 168, 217);
-  color: aliceblue;
-  font-size: 2rem;
-  padding: .5rem 1rem;
-  margin: 1rem;
-  height: max-content;
-  width: max-content;
-
-}

@@ -3,30 +3,27 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/grid.css" />
+    <link rel="stylesheet" href="css/reset.css"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <header>
-      <img src="images/cthulhu.jpg" alt="cthulhu" id="logo" />
-      <h1>Ad Tracker</h1>
-    </header>
-
-    <main>
-      <!-- create event listener for images and then track some data for market based on clicks and views -->
-      <section class="flex-container">
-        <img />
-        <img />
-        <img />
+    <div class="container">
+      <header class="header">
+        <h1>Bus Mall!</h1>
+      </header>
+      <section class="main">
+          <img />
+          <img />
+          <img />
       </section>
-    </main>
-    <div id="button">View Results</div>
-    <button id="chartResults">View Chart!</button>
-        <ul></ul>
-      <div>
-        <canvas id="imageChart" width="800" height="300"></canvas>
-
-        
+      <div class="chart">
+          <button id="chartResults" role="button">View Chart!</button>
+          <canvas id="imageChart" width="800" height="300"></canvas>
+        </div>
       </div>
+      <footer class="footer">
+        <p>Creator: Jack Stubblefield</p>
+      </footer>
     <script src="js/app.js"></script>
   </body>
 </html>
